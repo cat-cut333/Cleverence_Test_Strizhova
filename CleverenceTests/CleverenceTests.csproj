@@ -19,6 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Task1_StringCompression\Task1_StringCompression.csproj" />
     <ProjectReference Include="..\Task2_ThreadSafeServer\Task2_ThreadSafeServer.csproj" />
+    <ProjectReference Include="..\Task3_LogStandardizer\Task3_LogStandardizer.csproj" />
   </ItemGroup>
 
   <ItemGroup>
