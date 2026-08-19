@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Task3_LogStandardizer.Core.Entities;
 using Task3_LogStandardizer.Core.Enums;
+using Task3_LogStandardizer.Core.Interfaces;
 
 namespace Task3_LogStandardizer.Core.Abstract
 {
-    public abstract class LogParserBase
+    public abstract class LogParserBase : ILogParser
     {
         public abstract LogEntry Parse(string line);
 
