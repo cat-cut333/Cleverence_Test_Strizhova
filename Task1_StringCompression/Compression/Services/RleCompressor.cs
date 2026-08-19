@@ -4,16 +4,34 @@ using Task1_StringCompression.Compression.Interfaces;
 using Task1_StringCompression.Validation.Interfaces;
 
 namespace Task1_StringCompression.Compression.Services
-{
+{ /// <summary>
+  /// Implements Run-Length Encoding (RLE) compression and decompression.
+  /// </summary>
     public class RleCompressor : ICompressor
     {
+      
         private readonly IValidator<string> _validator;
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RleCompressor"/> class.
+        /// </summary>
+        /// <param name="validator">The validator used to validate input strings.</param>
+        /// <exception cref="ArgumentNullException">Thrown when validator is null.</exception>
         public RleCompressor(IValidator<string> validator)
         {
             _validator = validator ?? throw new ArgumentNullException(nameof(validator));
         }
-
+        /// <summary>
+        /// Compresses a string using the RLE algorithm.
+        /// </summary>
+        /// <param name="input">The string to compress. Must contain only lowercase Latin letters.</param>
+        /// <returns>The compressed string. Groups of identical characters are replaced with the character and count.</returns>
+        /// <example>
+        /// <code>
+        /// var compressor = new RleCompressor(new DefaultStringValidator());
+        /// string result = compressor.Compress("aaabbcccdde"); // "a3b2c3d2e"
+        /// </code>
+        /// </example>
+        /// <exception cref="ArgumentException">Thrown when the input contains invalid characters.</exception>
         public string Compress(string input)
         {
             _validator.ValidateOrThrow(input, allowEmpty: true);
@@ -44,6 +62,12 @@ namespace Task1_StringCompression.Compression.Services
             return result.ToString();
         }
 
+        /// <summary>
+        /// Decompresses a string that was compressed with the RLE algorithm.
+        /// </summary>
+        /// <param name="input">The compressed string (e.g., "a3b2c3d2e").</param>
+        /// <returns>The original uncompressed string.</returns>
+        /// <exception cref="ArgumentException">Thrown when the compressed string is malformed.</exception>
         public string Decompress(string input)
         {
             if (string.IsNullOrEmpty(input))

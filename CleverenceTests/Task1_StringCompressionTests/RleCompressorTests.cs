@@ -30,4 +30,39 @@ public class RleCompressorTests
 
         Assert.Equal("aaabbcccdde", result);
     }
+
+    [Fact]
+    public void Compress_EmptyString_ReturnsEmpty()
+    {
+        var validator = new DefaultStringValidator();
+        var compressor = new RleCompressor(validator);
+
+        string result = compressor.Compress("");
+
+        Assert.Equal("", result);
+    }
+
+    [Fact]
+    public void Compress_InvalidString_ThrowsArgumentException()
+    {
+        var validator = new DefaultStringValidator();
+        var compressor = new RleCompressor(validator);
+        string invalid = "aa bb";
+
+        Assert.Throws<ArgumentException>(() => compressor.Compress(invalid));
+    }
+
+    [Fact]
+    public void CompressDecompress_RoundTrip_ReturnsOriginal()
+    {
+        var validator = new DefaultStringValidator();
+        var compressor = new RleCompressor(validator);
+        string original = "aaabbcccdde";
+
+        string compressed = compressor.Compress(original);
+        string decompressed = compressor.Decompress(compressed);
+
+        Assert.Equal(original, decompressed);
+    }
+
 }
