@@ -8,7 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Parsers\" />
     <Folder Include="Formatters\" />
     <Folder Include="Services\" />
     <Folder Include="Infrastructure\" />
