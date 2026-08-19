@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleverenceTests", "Cleveren
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task2_ThreadSafeServer", "Task2_ThreadSafeServer\Task2_ThreadSafeServer.csproj", "{0BBC49DC-7D5C-4A7C-BDF8-414865ECC9F0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task3_LogStandardizer", "Task3_LogStandardizer\Task3_LogStandardizer.csproj", "{5D8604CC-EA94-418B-B923-072DD575BD9C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{0BBC49DC-7D5C-4A7C-BDF8-414865ECC9F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BBC49DC-7D5C-4A7C-BDF8-414865ECC9F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BBC49DC-7D5C-4A7C-BDF8-414865ECC9F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D8604CC-EA94-418B-B923-072DD575BD9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D8604CC-EA94-418B-B923-072DD575BD9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D8604CC-EA94-418B-B923-072DD575BD9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D8604CC-EA94-418B-B923-072DD575BD9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
