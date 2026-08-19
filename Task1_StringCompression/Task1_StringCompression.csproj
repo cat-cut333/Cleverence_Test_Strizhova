@@ -8,9 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Validation\Interfaces\" />
     <Folder Include="Validation\Services\" />
-    <Folder Include="Compression\Interfaces\" />
     <Folder Include="Compression\Services\" />
   </ItemGroup>
 
