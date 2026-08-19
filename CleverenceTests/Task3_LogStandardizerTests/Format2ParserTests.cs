@@ -4,6 +4,93 @@ using Task3_LogStandardizer.Core.Enums;
 
 public class Format2ParserTests
 {
+    
+
+    [Fact]
+    public void Parse_LineWithEmptyMethod_DefaultsToDEFAULT()
+    {
+        var parser = new Format2Parser();
+        string line = "2025-03-10 15:14:51.5882| INFO|11|| Сообщение";
+
+        var result = parser.Parse(line);
+        Assert.Equal("DEFAULT", result.Method);
+    }
+
+    [Fact]
+    public void Parse_LineWithWarningLevel_ReturnsWARN()
+    {
+        var parser = new Format2Parser();
+        string line = "2025-03-10 15:14:51.5882| WARN|11|Method| Сообщение";
+
+        var result = parser.Parse(line);
+        Assert.Equal(LogLevel.WARN, result.Level);
+    }
+
+    [Fact]
+    public void Parse_LineWithErrorLevel_ReturnsERROR()
+    {
+        var parser = new Format2Parser();
+        string line = "2025-03-10 15:14:51.5882| ERROR|11|Method| Сообщение";
+
+        var result = parser.Parse(line);
+        Assert.Equal(LogLevel.ERROR, result.Level);
+    }
+
+    [Fact]
+    public void Parse_LineWithDebugLevel_ReturnsDEBUG()
+    {
+        var parser = new Format2Parser();
+        string line = "2025-03-10 15:14:51.5882| DEBUG|11|Method| Сообщение";
+
+        var result = parser.Parse(line);
+        Assert.Equal(LogLevel.DEBUG, result.Level);
+    }
+
+    [Fact]
+    public void Parse_EmptyLine_ThrowsArgumentException()
+    {
+        var parser = new Format2Parser();
+        string invalidLine = "";
+
+        Assert.Throws<ArgumentException>(() => parser.Parse(invalidLine));
+    }
+
+    [Fact]
+    public void Parse_NullLine_ThrowsArgumentException()
+    {
+        var parser = new Format2Parser();
+        string invalidLine = null;
+
+        Assert.Throws<ArgumentException>(() => parser.Parse(invalidLine));
+    }
+
+    [Fact]
+    public void Parse_InvalidDateFormat_ThrowsArgumentException()
+    {
+        var parser = new Format2Parser();
+        string invalidLine = "10.03.2025 15:14:51.5882| INFO|11|Method| Сообщение";
+
+        Assert.Throws<ArgumentException>(() => parser.Parse(invalidLine));
+    }
+
+    
+    [Fact]
+    public void Parse_InvalidLevel_ThrowsArgumentException()
+    {
+        var parser = new Format2Parser();
+        string invalidLine = "2025-03-10 15:14:51.5882| UNKNOWN|11|Method| Сообщение";
+
+        Assert.Throws<ArgumentException>(() => parser.Parse(invalidLine));
+    }
+
+    [Fact]
+    public void Parse_LineWithMissingParts_ThrowsArgumentException()
+    {
+        var parser = new Format2Parser();
+        string invalidLine = "2025-03-10 15:14:51.5882| INFO|11";
+
+        Assert.Throws<ArgumentException>(() => parser.Parse(invalidLine));
+    }
     [Fact]
     public void Parse_ValidLine_ReturnsLogEntry()
     {
@@ -41,4 +128,6 @@ public class Format2ParserTests
 
         Assert.Throws<ArgumentException>(() => parser.Parse(invalidLine));
     }
+
+
 }
