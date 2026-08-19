@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Task1_StringCompression\Task1_StringCompression.csproj" />
+    <ProjectReference Include="..\Task2_ThreadSafeServer\Task2_ThreadSafeServer.csproj" />
   </ItemGroup>
 
   <ItemGroup>
