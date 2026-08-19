@@ -32,7 +32,26 @@ namespace Task2_ThreadSafeServer.Server.Services
             _lock.EnterWriteLock();
             try
             {
-                _count += value;
+                _count = checked(_count + value);
+                
+            }
+            catch (OverflowException ex)
+            {
+                
+                throw new InvalidOperationException("Count overflow occurred.", ex);
+            }
+            finally
+            {
+                _lock.ExitWriteLock();
+            }
+        }
+
+        public void Reset()
+        {
+            _lock.EnterWriteLock();
+            try
+            {
+                _count = 0;
             }
             finally
             {

@@ -39,5 +39,50 @@ namespace CleverenceTests.Task2_ThreadSafeServerTests
             Assert.Equal(100, server.GetCount());
         }
 
+        [Fact]
+        public void AddToCount_And_GetCount_MixedWorkload_NoExceptions()
+        {
+            // Arrange
+            var server = new StaticServer();
+
+            // Act
+            Parallel.Invoke(
+                () => server.AddToCount(10),
+                () => server.AddToCount(20),
+                () => server.GetCount(),
+                () => server.AddToCount(30),
+                () => server.GetCount()
+            );
+
+            // Assert
+            Assert.Equal(60, server.GetCount());
+        }
+
+        [Fact]
+        public void AddToCount_ZeroValue_DoesNotChangeCount()
+        {
+            var server = new StaticServer();
+            server.AddToCount(10);
+            server.AddToCount(0);
+            Assert.Equal(10, server.GetCount());
+        }
+
+        [Fact]
+        public void Reset_SetsCountToZero()
+        {
+            var server = new StaticServer();
+            server.AddToCount(10);
+            server.Reset();
+            Assert.Equal(0, server.GetCount());
+        }
+
+        [Fact]
+        public void AddToCount_Overflow_ThrowsException()
+        {
+            var server = new StaticServer();
+            server.AddToCount(int.MaxValue);
+
+            Assert.Throws<InvalidOperationException>(() => server.AddToCount(1));
+        }
     }
 }
