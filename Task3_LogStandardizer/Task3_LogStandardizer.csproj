@@ -8,10 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Core\Entities\" />
-    <Folder Include="Core\Enums\" />
-    <Folder Include="Core\Abstract\" />
-    <Folder Include="Core\Interfaces\" />
     <Folder Include="Parsers\" />
     <Folder Include="Formatters\" />
     <Folder Include="Services\" />
