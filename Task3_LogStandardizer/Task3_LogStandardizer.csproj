@@ -8,7 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Formatters\" />
     <Folder Include="Services\" />
     <Folder Include="Infrastructure\" />
   </ItemGroup>
