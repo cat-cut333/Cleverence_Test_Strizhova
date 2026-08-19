@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task1_StringCompression", "Task1_StringCompression\Task1_StringCompression.csproj", "{498479C3-0B22-4858-9353-158143A3CA41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleverenceTests", "CleverenceTests\CleverenceTests.csproj", "{E29E7B55-7323-4729-BFF6-BA22D76F3648}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{498479C3-0B22-4858-9353-158143A3CA41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{498479C3-0B22-4858-9353-158143A3CA41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{498479C3-0B22-4858-9353-158143A3CA41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{498479C3-0B22-4858-9353-158143A3CA41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E29E7B55-7323-4729-BFF6-BA22D76F3648}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E29E7B55-7323-4729-BFF6-BA22D76F3648}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E29E7B55-7323-4729-BFF6-BA22D76F3648}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E29E7B55-7323-4729-BFF6-BA22D76F3648}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {54B826D8-E3D8-4C6D-8189-96F9100B474C}
+	EndGlobalSection
+EndGlobal
