@@ -14,7 +14,7 @@ public class StandardLogFormatterTests
         var entry = new LogEntry
         {
             Date = new DateTime(2025, 3, 10),
-            Time = TimeSpan.Parse("15:14:49.523"),
+            Time = "15:14:49.523",
             Level = LogLevel.INFO,
             Method = "TestMethod",
             Message = "Test message"
@@ -35,7 +35,7 @@ public class StandardLogFormatterTests
         var entry = new LogEntry
         {
             Date = new DateTime(2025, 3, 10),
-            Time = TimeSpan.Parse("15:14:49.523"),
+            Time = "15:14:49.523",
             Level = LogLevel.WARN,
             Method = null,
             Message = "Test message"

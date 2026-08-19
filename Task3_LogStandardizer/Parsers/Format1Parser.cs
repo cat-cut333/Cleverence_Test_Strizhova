@@ -20,9 +20,14 @@ namespace Task3_LogStandardizer.Parsers
             if (!DateTime.TryParseExact(parts[0], "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out var date))
                 throw new ArgumentException($"Invalid date format: {parts[0]}");
 
-            
-            if (!TimeSpan.TryParse(parts[1], CultureInfo.InvariantCulture, out var time))
-                throw new ArgumentException($"Invalid time format: {parts[1]}");
+
+            // Время — сохраняем КАК ЕСТЬ, без изменений
+            var timeStr = parts[1];
+
+            // Минимальная проверка: хотя бы один символ, не пустая строка
+            if (string.IsNullOrWhiteSpace(timeStr))
+                throw new ArgumentException($"Invalid time format: {timeStr}");
+
 
             var level = MapLevel(parts[2]);
             var message = parts[3];
@@ -30,7 +35,7 @@ namespace Task3_LogStandardizer.Parsers
             return new LogEntry
             {
                 Date = date,
-                Time = time,
+                Time = timeStr,
                 Level = level,
                 Method = "DEFAULT",
                 Message = message

@@ -115,16 +115,6 @@ namespace Task3_LogStandardizerTests
             Assert.Throws<ArgumentException>(() => parser.Parse(invalidLine));
         }
 
-        [Fact]
-        public void Parse_InvalidTimeFormat_ThrowsArgumentException()
-        {
-            // Arrange
-            var parser = new Format1Parser();
-            string invalidLine = "10.03.2025 15:14 INFO Сообщение";
-
-            // Act & Assert
-            Assert.Throws<ArgumentException>(() => parser.Parse(invalidLine));
-        }
 
         [Fact]
         public void Parse_InvalidLevel_ThrowsArgumentException()

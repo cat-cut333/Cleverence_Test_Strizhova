@@ -16,16 +16,18 @@ namespace Task3_LogStandardizer.Parsers
             if (parts.Length < 5)
                 throw new ArgumentException($"Invalid Format2 line: {line}");
 
-            // Парсим дату+время (YYYY-MM-DD HH:MM:SS.ffff)
-            var dateTimeParts = parts[0].Trim().Split(' ', 2);
+            // Парсим дату (YYYY-MM-DD)
+            var dateTimeParts = parts[0].Trim().Split(' ', 2, StringSplitOptions.None);
             if (dateTimeParts.Length < 2)
                 throw new ArgumentException($"Invalid date-time format: {parts[0]}");
 
             if (!DateTime.TryParseExact(dateTimeParts[0], "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var date))
                 throw new ArgumentException($"Invalid date format: {dateTimeParts[0]}");
 
-            if (!TimeSpan.TryParse(dateTimeParts[1], CultureInfo.InvariantCulture, out var time))
-                throw new ArgumentException($"Invalid time format: {dateTimeParts[1]}");
+            // Время — сохраняем КАК ЕСТЬ
+            var timeStr = dateTimeParts[1];
+            if (string.IsNullOrWhiteSpace(timeStr))
+                throw new ArgumentException($"Invalid time format: {timeStr}");
 
             var level = MapLevel(parts[1].Trim());
             var method = parts[3].Trim();
@@ -34,7 +36,7 @@ namespace Task3_LogStandardizer.Parsers
             return new LogEntry
             {
                 Date = date,
-                Time = time,
+                Time = timeStr,
                 Level = level,
                 Method = string.IsNullOrEmpty(method) ? "DEFAULT" : method,
                 Message = message

@@ -18,10 +18,8 @@ namespace Task3_LogStandardizer.Formatters
             sb.Append(entry.Date.ToString("dd-MM-yyyy"));
             sb.Append('\t');
 
-            // Время с сохранением исходного количества знаков
-            var timeStr = entry.Time.ToString(@"hh\:mm\:ss\.fffffff");
-            timeStr = NormalizeTimeFormat(timeStr);
-            sb.Append(timeStr);
+            sb.Append(entry.Time);
+            
             sb.Append('\t');
 
             // Уровень логирования
@@ -39,20 +37,6 @@ namespace Task3_LogStandardizer.Formatters
             return sb.ToString();
         }
 
-        private string NormalizeTimeFormat(string timeStr)
-        {
-            var parts = timeStr.Split('.');
-            if (parts.Length != 2)
-                return timeStr;
-
-            var mainPart = parts[0];
-            var fractionalPart = parts[1].TrimEnd('0');
-
-            
-            if (string.IsNullOrEmpty(fractionalPart))
-                return mainPart + ".0";
-
-            return mainPart + "." + fractionalPart;
-        }
+        
     }
 }
