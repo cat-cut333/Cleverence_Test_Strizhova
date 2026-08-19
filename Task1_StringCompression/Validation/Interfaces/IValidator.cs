@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Task1_StringCompression.Validation.Interfaces
 {
-    interface IValidator<T>
+    public interface IValidator<T>
     {
         bool IsValid(T input, bool allowEmpty = false);
         void ValidateOrThrow(T input, bool allowEmpty = false);
