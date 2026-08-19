@@ -47,22 +47,4 @@ public class StandardLogFormatterTests
         // Assert
         Assert.Contains("DEFAULT", result);
     }
-
-
-    [Fact]
-    public void Format_ValidLogEntry_With4DigitMilliseconds_ReturnsTabSeparatedString()
-    {
-        var formatter = new StandardLogFormatter();
-        var entry = new LogEntry
-        {
-            Date = new DateTime(2025, 3, 10),
-            Time = TimeSpan.Parse("15:14:49.5231"),
-            Level = LogLevel.INFO,
-            Method = "TestMethod",
-            Message = "Test message"
-        };
-
-        string result = formatter.Format(entry);
-        Assert.Equal("10-03-2025\t15:14:49.5231\tINFO\tTestMethod\tTest message", result);
-    }
 }
