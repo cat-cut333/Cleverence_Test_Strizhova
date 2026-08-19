@@ -5,7 +5,7 @@ using Task2_ThreadSafeServer.Server.Interfaces;
 
 namespace CleverenceTests.Task2_ThreadSafeServerTests
 {
-    class StaticServerTests
+    public class StaticServerTests
     {
         [Fact]
         public void GetCount_ReturnsInitialValue_WhenNoWrites()
