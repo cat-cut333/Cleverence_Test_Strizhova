@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task1_StringCompression", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleverenceTests", "CleverenceTests\CleverenceTests.csproj", "{E29E7B55-7323-4729-BFF6-BA22D76F3648}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task2_ThreadSafeServer", "Task2_ThreadSafeServer\Task2_ThreadSafeServer.csproj", "{0BBC49DC-7D5C-4A7C-BDF8-414865ECC9F0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{E29E7B55-7323-4729-BFF6-BA22D76F3648}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E29E7B55-7323-4729-BFF6-BA22D76F3648}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E29E7B55-7323-4729-BFF6-BA22D76F3648}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BBC49DC-7D5C-4A7C-BDF8-414865ECC9F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BBC49DC-7D5C-4A7C-BDF8-414865ECC9F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BBC49DC-7D5C-4A7C-BDF8-414865ECC9F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BBC49DC-7D5C-4A7C-BDF8-414865ECC9F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
