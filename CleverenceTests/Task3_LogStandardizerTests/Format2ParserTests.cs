@@ -7,14 +7,14 @@ public class Format2ParserTests
     [Fact]
     public void Parse_ValidLine_ReturnsLogEntry()
     {
-        // Arrange
+        
         var parser = new Format2Parser();
         string line = "2025-03-10 15:14:51.5882| INFO|11|MobileComputer.GetDeviceId| Код устройства: '@MINDEO-M40-D-410244015546'";
 
-        // Act
+       
         var result = parser.Parse(line);
 
-        // Assert
+        
         Assert.Equal(2025, result.Date.Year);
         Assert.Equal(3, result.Date.Month);
         Assert.Equal(10, result.Date.Day);
