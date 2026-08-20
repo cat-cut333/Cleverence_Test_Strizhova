@@ -11,8 +11,25 @@ namespace Task3_LogStandardizer.Core.Abstract
 {
     public abstract class LogParserBase : ILogParser
     {
+        /// <summary>
+        /// Abstract base class for log parsers.
+        /// Provides common functionality for parsing log entries from different formats.
+        /// </summary>
+        /// <remarks>
+        /// This class implements the <see cref="ILogParser"/> interface and provides
+        /// a shared method for mapping log level strings to <see cref="LogLevel"/> enum values.
+        /// Derived classes must implement the <see cref="Parse"/> method.
+        /// </remarks>
         public abstract LogEntry Parse(string line);
 
+        /// <summary>
+        /// Parses a log line and returns a structured <see cref="LogEntry"/> object.
+        /// </summary>
+        /// <param name="line">The raw log line to parse.</param>
+        /// <returns>A <see cref="LogEntry"/> object containing the parsed data.</returns>
+        /// <exception cref="ArgumentException">
+        /// Thrown when the line format is invalid or cannot be parsed.
+        /// </exception>
         protected LogLevel MapLevel(string input)
         {
             return input.ToUpperInvariant() switch

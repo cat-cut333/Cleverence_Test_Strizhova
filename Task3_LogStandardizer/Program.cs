@@ -4,7 +4,13 @@ using Task3_LogStandardizer.Services;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace Task3_LogStandardizer
-{
+{/// <summary>
+ /// Entry point for the Log Standardizer console application.
+ /// </summary>
+ /// <remarks>
+ /// The application processes log files by parsing entries from two different formats
+ /// and writing them to a unified tab-separated format.
+ /// </remarks>
     class Program
     {
         static async Task Main(string[] args)
@@ -13,7 +19,7 @@ namespace Task3_LogStandardizer
 
             string inputFile = @"C:\\Users\\katia\\source\\repos\\Cleverence_Test_Strizhova\\CleverenceTest\\Task3_LogStandardizer\\input.txt";
             string outputFile = @"C:\\Users\\katia\\source\\repos\\Cleverence_Test_Strizhova\\CleverenceTest\\Task3_LogStandardizer\\output.txt";
-            string problems = @"C:\\Users\\katia\\source\\repos\\Cleverence_Test_Strizhova\\CleverenceTest\\Task3_LogStandardizer\\problems.txt";
+            string problems = @"C:\\Users\\katia\\source\\repos\\Cleverence_Test_Strizhova\\CleverenceTest\\Task3_LogStandardizer\\problems1.txt";
 
 
             var processor = new LogProcessor();

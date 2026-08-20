@@ -5,8 +5,38 @@ using Task3_LogStandardizer.Core.Entities;
 
 namespace Task3_LogStandardizer.Parsers
 {
+    /// <summary>
+    /// Parses log entries in Format 1: space-separated values.
+    /// </summary>
+    /// <remarks>
+    /// Expected format: <c>DD.MM.YYYY HH:MM:SS.fff LEVEL MESSAGE</c>
+    /// <para>
+    /// Example: <c>10.03.2025 15:14:49.523 INFORMATION Версия программы: '3.4.0'</c>
+    /// </para>
+    /// <para>
+    /// The time is preserved exactly as it appears in the source log,
+    /// maintaining the original number of decimal places in milliseconds.
+    /// </para>
+    /// </remarks>
     public class Format1Parser : LogParserBase
     {
+
+        /// <summary>
+        /// Parses a log line in Format 1 and returns a structured <see cref="LogEntry"/>.
+        /// </summary>
+        /// <param name="line">The log line to parse. Must not be <c>null</c> or empty.</param>
+        /// <returns>A <see cref="LogEntry"/> object containing the parsed data.</returns>
+        /// <exception cref="ArgumentException">
+        /// Thrown when:
+        /// <list type="bullet">
+        /// <item><description>The line is <c>null</c> or empty.</description></item>
+        /// <item><description>The line has fewer than 4 parts.</description></item>
+        /// <item><description>The date format is not <c>dd.MM.yyyy</c>.</description></item>
+        /// <item><description>The time field is empty.</description></item>
+        /// <item><description>The log level is unknown.</description></item>
+        /// </list>
+        /// </exception>
+        
         public override LogEntry Parse(string line)
         {
             if (string.IsNullOrWhiteSpace(line))
