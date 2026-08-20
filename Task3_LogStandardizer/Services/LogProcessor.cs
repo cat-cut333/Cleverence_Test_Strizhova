@@ -28,7 +28,7 @@ namespace Task3_LogStandardizer.Services
             var lines = File.ReadAllLines(inputFile);
             var tasks = new List<Task>();
 
-            using var writer = new StreamWriter(outputFile, append: false);
+            using var writer = new StreamWriter(outputFile, append: true);
 
             foreach (var line in lines)
             {
