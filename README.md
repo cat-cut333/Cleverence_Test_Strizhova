@@ -52,7 +52,7 @@ Solution to the test task for Cleverence
 ---
 ### Клонирование репозитория
 ```bash
-git clone https://github.com/ваш-аккаунт/CleverenceTest.git
+git clone https://github.com/cat-cut333/Cleverence_Test_Strizhova
 cd CleverenceTest
 ```
 # Запуск конкретного задания
