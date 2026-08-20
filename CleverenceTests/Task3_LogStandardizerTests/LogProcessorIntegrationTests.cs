@@ -11,6 +11,7 @@ public class LogProcessorIntegrationTests
         // Arrange
         string inputFile = Path.GetTempFileName();
         string outputFile = Path.GetTempFileName();
+        string problems = Path.GetTempFileName();
         string inputLine = "10.03.2025 15:14:49.523 INFORMATION Версия программы: '3.4.0'";
         string expectedOutput = "10-03-2025\t15:14:49.523\tINFO\tDEFAULT\tВерсия программы: '3.4.0'";
 
@@ -19,7 +20,7 @@ public class LogProcessorIntegrationTests
         var processor = new LogProcessor();
 
         // Act
-        await processor.ProcessAsync(inputFile, outputFile);
+        await processor.ProcessAsync(inputFile, outputFile, problems);
 
         // Assert
         string result = File.ReadAllText(outputFile).Trim();
@@ -36,6 +37,7 @@ public class LogProcessorIntegrationTests
         // Arrange
         string inputFile = Path.GetTempFileName();
         string outputFile = Path.GetTempFileName();
+        string problems = Path.GetTempFileName();
         string[] inputLines = new[]
         {
             "10.03.2025 15:14:49.523 INFORMATION Версия программы: '3.4.0'",
@@ -52,7 +54,7 @@ public class LogProcessorIntegrationTests
         var processor = new LogProcessor();
 
         // Act
-        await processor.ProcessAsync(inputFile, outputFile);
+        await processor.ProcessAsync(inputFile, outputFile, problems);
 
         // Assert
         string[] result = File.ReadAllLines(outputFile);
@@ -61,6 +63,7 @@ public class LogProcessorIntegrationTests
         // Cleanup
         File.Delete(inputFile);
         File.Delete(outputFile);
+        File.Delete(problems);
     }
 
     [Fact]
@@ -69,6 +72,7 @@ public class LogProcessorIntegrationTests
         // Arrange
         string inputFile = Path.GetTempFileName();
         string outputFile = Path.GetTempFileName();
+        string problems = Path.GetTempFileName();
         string invalidLine = "Это невалидная строка";
 
         File.WriteAllText(inputFile, invalidLine);
@@ -76,16 +80,16 @@ public class LogProcessorIntegrationTests
         var processor = new LogProcessor();
 
         // Act
-        await processor.ProcessAsync(inputFile, outputFile);
+        await processor.ProcessAsync(inputFile, outputFile, problems);
 
         // Assert
-        string problems = File.ReadAllText("problems.txt").Trim();
-        Assert.Equal(invalidLine, problems);
+        string problem = File.ReadAllText(problems).Trim();
+        Assert.Equal(invalidLine, problem);
 
         // Cleanup
         File.Delete(inputFile);
         File.Delete(outputFile);
-        File.Delete("problems.txt");
+        File.Delete(problems);
     }
 
     [Fact]
@@ -94,6 +98,7 @@ public class LogProcessorIntegrationTests
         // Arrange
         string inputFile = Path.GetTempFileName();
         string outputFile = Path.GetTempFileName();
+        string problems = Path.GetTempFileName();
         string[] inputLines = new[]
         {
             "10.03.2025 15:14:49.523 INFORMATION Валидная строка",
@@ -111,19 +116,19 @@ public class LogProcessorIntegrationTests
         var processor = new LogProcessor();
 
         // Act
-        await processor.ProcessAsync(inputFile, outputFile);
+        await processor.ProcessAsync(inputFile, outputFile, problems);
 
         // Assert
         string[] result = File.ReadAllLines(outputFile);
         Assert.Equal(expectedOutputs, result);
 
-        string problems = File.ReadAllText("problems.txt").Trim();
-        Assert.Equal("Невалидная строка", problems);
+        string problem = File.ReadAllText(problems).Trim();
+        Assert.Equal("Невалидная строка", problem);
 
         // Cleanup
         File.Delete(inputFile);
         File.Delete(outputFile);
-        File.Delete("problems.txt");
+        File.Delete(problems);
     }
 
     [Fact]
@@ -134,6 +139,6 @@ public class LogProcessorIntegrationTests
         string nonExistentFile = "nonexistent.txt";
 
         // Act & Assert
-        await Assert.ThrowsAsync<FileNotFoundException>(() => processor.ProcessAsync(nonExistentFile, "output.txt"));
+        await Assert.ThrowsAsync<FileNotFoundException>(() => processor.ProcessAsync(nonExistentFile, "output.txt","problem.txt"));
     }
 }
