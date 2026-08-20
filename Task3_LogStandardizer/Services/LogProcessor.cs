@@ -20,7 +20,7 @@ namespace Task3_LogStandardizer.Services
 
         private readonly ILogFormatter _formatter = new StandardLogFormatter();
 
-        public async Task ProcessAsync(string inputFile, string outputFile)
+        public async Task ProcessAsync(string inputFile, string outputFile,string problemFile)
         {
             if (!File.Exists(inputFile))
                 throw new FileNotFoundException($"Input file not found: {inputFile}");
@@ -42,12 +42,12 @@ namespace Task3_LogStandardizer.Services
                     }
                     else
                     {
-                        tasks.Add(ProblemLogger.LogProblemAsync(line));
+                        tasks.Add(ProblemLogger.LogProblemAsync(line, problemFile));
                     }
                 }
                 catch (Exception)
                 {
-                    tasks.Add(ProblemLogger.LogProblemAsync(line));
+                    tasks.Add(ProblemLogger.LogProblemAsync(line, problemFile));
                 }
             }
 
